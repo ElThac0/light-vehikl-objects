@@ -1,11 +1,11 @@
 <?php
 
-namespace App\GameObjects\Personalities;
+namespace LightVehikl\LvObjects\GameObjects\Personalities;
 
-use App\Enums\Direction;
-use App\GameObjects\Arena;
-use App\GameObjects\Personalities\Traits\PicksGoodMoves;
-use App\GameObjects\Player;
+use LightVehikl\LvObjects\Enums\Direction;
+use LightVehikl\LvObjects\GameObjects\Arena;
+use LightVehikl\LvObjects\GameObjects\Personalities\Traits\PicksGoodMoves;
+use LightVehikl\LvObjects\GameObjects\Player;
 
 class ChangeDirection implements Personality
 {

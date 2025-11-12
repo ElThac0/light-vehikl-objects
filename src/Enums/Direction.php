@@ -1,6 +1,6 @@
 <?php
 
-namespace Vehikl\LvObjects\Enums;
+namespace LightVehikl\LvObjects\Enums;
 
 enum Direction: string
 {

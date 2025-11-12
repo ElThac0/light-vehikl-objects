@@ -1,11 +1,11 @@
 <?php
 
-namespace Vehikl\LvObjects\GameObjects;
+namespace LightVehikl\LvObjects\GameObjects;
 
 
-use Vehikl\LvObjects\Enums\ContentType;
-use Vehikl\LvObjects\Enums\Direction;
-use Vehikl\LvObjects\Enums\PlayerStatus;
+use LightVehikl\LvObjects\Enums\ContentType;
+use LightVehikl\LvObjects\Enums\Direction;
+use LightVehikl\LvObjects\Enums\PlayerStatus;
 use JsonSerializable;
 
 class Player implements JsonSerializable

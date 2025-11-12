@@ -1,8 +1,8 @@
 <?php
 
-namespace Vehikl\LvObjects\GameObjects;
+namespace LightVehikl\LvObjects\GameObjects;
 
-use Vehikl\LvObjects\Enums\ContentType;
+use LightVehikl\LvObjects\Enums\ContentType;
 
 class Tile
 {

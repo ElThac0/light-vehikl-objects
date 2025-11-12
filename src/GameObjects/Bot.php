@@ -1,11 +1,11 @@
 <?php
 
-namespace Vehikl\LvObjects\GameObjects;
+namespace LightVehikl\LvObjects\GameObjects;
 
-use Vehikl\LvObjects\Enums\Direction;
-use Vehikl\LvObjects\Enums\PersonalityType;
-use Vehikl\LvObjects\GameObjects\Personalities\KeepLane;
-use Vehikl\LvObjects\GameObjects\Personalities\Personality;
+use LightVehikl\LvObjects\Enums\Direction;
+use LightVehikl\LvObjects\Enums\PersonalityType;
+use LightVehikl\LvObjects\GameObjects\Personalities\KeepLane;
+use LightVehikl\LvObjects\GameObjects\Personalities\Personality;
 use Illuminate\Support\Str;
 
 class Bot

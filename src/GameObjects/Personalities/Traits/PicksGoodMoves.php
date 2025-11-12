@@ -1,8 +1,8 @@
 <?php
 
-namespace Vehikl\LvObjects\GameObjects\Personalities\Traits;
+namespace LightVehikl\LvObjects\GameObjects\Personalities\Traits;
 
-use Vehikl\LvObjects\Enums\Direction;
+use LightVehikl\LvObjects\Enums\Direction;
 use Illuminate\Support\Arr;
 
 trait PicksGoodMoves

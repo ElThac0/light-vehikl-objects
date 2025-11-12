@@ -1,9 +1,9 @@
 <?php
 
-namespace Vehikl\LvObjects\GameObjects;
+namespace LightVehikl\LvObjects\GameObjects;
 
-use Vehikl\LvObjects\Enums\ContentType;
-use Vehikl\LvObjects\Enums\Direction;
+use LightVehikl\LvObjects\Enums\ContentType;
+use LightVehikl\LvObjects\Enums\Direction;
 
 class Arena
 {

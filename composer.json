@@ -1,11 +1,11 @@
 {
-  "name": "vehikl/lvobjects",
+  "name": "light-vehikl/lvobjects",
   "description": "Light Vehikl Game Object framework",
   "type": "library",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Vehikl\\LvObjects\\": "src/"
+      "LightVehikl\\LvObjects\\": "src/"
     }
   },
   "authors": [
@@ -21,7 +21,7 @@
   "extra": {
     "laravel": {
       "providers" : [
-        "Vehikl\\LvObjects\\LvObjectsServiceProvider"
+        "LightVehikl\\LvObjects\\LvObjectsServiceProvider"
       ]
     }
   },

@@ -2,6 +2,7 @@
   "name": "vehikl/lvobjects",
   "description": "Light Vehikl Game Object framework",
   "type": "library",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Vehikl\\LvObjects\\": "src/"

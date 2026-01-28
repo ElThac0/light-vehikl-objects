@@ -20,6 +20,7 @@ class BotClient
     public array $gameState;
     private WSClient $ws;
     private string $gameId;
+    private string $webSocketKey;
 
     public function __construct(
         public Personality $bot,
@@ -55,6 +56,7 @@ class BotClient
         $this->gameId = $gameId;
         $this->playerId = $response->json('yourId');
         $this->gameState = $response->json('gameState');
+        $this->webSocketKey = $response->json('webSocketKey');
         ($this->output)('Joined as player: <info>' . $this->playerId . '</info>');
     }
 
@@ -65,9 +67,8 @@ class BotClient
 
     protected function connectWebsocket(): void
     {
-        $key = config('reverb.apps.apps.0.key');
-        ($this->output)('Connecting to websocket with key ' . $key);
-        $this->ws = new WSClient($this->socketHost . $key . '?protocol=7');
+        ($this->output)('Connecting to websocket with key ' . $this->webSocketKey);
+        $this->ws = new WSClient($this->socketHost . $this->webSocketKey . '?protocol=7');
         $this->ws
             // Add standard middlewares
             ->addMiddleware(new \WebSocket\Middleware\CloseHandler())

@@ -10,6 +10,8 @@ use JsonSerializable;
 
 class Player implements JsonSerializable
 {
+    protected string $name;
+
     public function __construct(
         public string $id,
         public PlayerStatus $status = PlayerStatus::WAITING,
@@ -115,27 +117,14 @@ class Player implements JsonSerializable
         return $this->status === PlayerStatus::CRASHED;
     }
 
-    public function avoidDirections(): array
+    public function setName(string $name): self
     {
-        $avoid = [];
+        $this->name = $name;
+        return $this;
+    }
 
-        if ($this->x === 0) {
-            $avoid[] = Direction::WEST;
-        }
-
-        if ($this->y === 0) {
-            $avoid[] = Direction::NORTH;
-        }
-
-        // TODO: Remove magic number 24s
-        if ($this->x === 24) {
-            $avoid[] = Direction::EAST;
-        }
-
-        if ($this->y === 24) {
-            $avoid[] = Direction::SOUTH;
-        }
-
-        return $avoid;
+    public function getName(): string
+    {
+        return $this->name ?? $this->id;
     }
 }

@@ -27,4 +27,10 @@ class KeepLane implements Personality
 
         return $this->pickGoodMove();
     }
+
+    public function updatePlayer(Player $player): static
+    {
+        $this->player = $player;
+        return $this;
+    }
 }

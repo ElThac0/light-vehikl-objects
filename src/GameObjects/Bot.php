@@ -18,12 +18,12 @@ class Bot
     public function __construct(?Player $player = null, PersonalityType $personality = null)
     {
         $this->player = $player ?: new Player(Str::uuid()->toString());
-        $this->personality = $personality ? new $personality->value($this->player) : new KeepLane($this->player);
+        $this->personality = $personality ? new $personality->value() : new KeepLane();
     }
 
     public function decideMove(): Direction|null
     {
-        return $this->personality->decideMove($this->arena);
+        return $this->personality->decideMove($this->arena, $this->player);
     }
 
     public function updatePlayer(): void
@@ -42,10 +42,5 @@ class Bot
     public static function fromPlayer(Player $player): self
     {
         return new static($player);
-    }
-
-    public static function deserialize(): self
-    {
-
     }
 }

@@ -8,6 +8,5 @@ use LightVehikl\LvObjects\GameObjects\Player;
 
 interface Personality
 {
-    public function decideMove(Arena $arena): Direction|null;
-    public function updatePlayer(Player $player): static;
+    public function decideMove(Arena $arena, Player $player): Direction|null;
 }

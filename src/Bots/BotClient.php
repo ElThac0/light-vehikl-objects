@@ -112,8 +112,7 @@ class BotClient
 
         $playerData = collect($data['players'])->first(fn(array $player) => $player['id'] === $this->playerId);
         $player = Player::deserialize($playerData);
-        $this->bot->updatePlayer($player);
-        $move = $this->bot->decideMove($arena);
+        $move = $this->bot->decideMove($arena, $player);
         if ($move) {
             $this->webClient->post($this->host . "/game/{$this->gameId}/move", ['direction' => $move->value]);
             ($this->output)("[{$tick}:{$data['status']}] Changed direction to <info>{$move->value}</info>");

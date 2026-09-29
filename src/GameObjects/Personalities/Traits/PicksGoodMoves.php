@@ -4,15 +4,17 @@ namespace LightVehikl\LvObjects\GameObjects\Personalities\Traits;
 
 use LightVehikl\LvObjects\Enums\Direction;
 use Illuminate\Support\Arr;
+use LightVehikl\LvObjects\GameObjects\Arena;
+use LightVehikl\LvObjects\GameObjects\Player;
 
 trait PicksGoodMoves
 {
-    protected function pickGoodMove(): Direction|null
+    protected function pickGoodMove(Arena $arena, Player $player): Direction|null
     {
         $goodMoves = [];
 
         foreach (Direction::cases() as $direction) {
-            if ($this->goodDirection($direction)) {
+            if ($this->goodDirection($arena, $player, $direction)) {
                 $goodMoves[] = $direction;
             }
         }
@@ -24,9 +26,9 @@ trait PicksGoodMoves
         return Arr::random($goodMoves);
     }
 
-    protected function goodDirection(Direction $direction): bool
+    protected function goodDirection(Arena $arena, Player $player, Direction $direction): bool
     {
-        [$x, $y] = $this->player->getLocation();
+        [$x, $y] = $player->getLocation();
         switch ($direction) {
             case Direction::NORTH:
                 $y--;
@@ -41,6 +43,6 @@ trait PicksGoodMoves
                 $x--;
                 break;
         }
-        return $this->arena->validMove([$x, $y]);
+        return $arena->validMove([$x, $y]);
     }
 }

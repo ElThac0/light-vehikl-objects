@@ -11,26 +11,12 @@ class KeepLane implements Personality
 {
     use PicksGoodMoves;
 
-    private Arena $arena;
-
-    public function __construct(private Player $player)
+    public function decideMove(Arena $arena, Player $player): ?Direction
     {
-    }
-
-    public function decideMove(Arena $arena): ?Direction
-    {
-        $this->arena = $arena;
-
-        if ($this->goodDirection($this->player->direction)) {
+        if ($this->goodDirection($arena, $player, $player->direction)) {
             return null;
         }
 
-        return $this->pickGoodMove();
-    }
-
-    public function updatePlayer(Player $player): static
-    {
-        $this->player = $player;
-        return $this;
+        return $this->pickGoodMove($arena, $player);
     }
 }

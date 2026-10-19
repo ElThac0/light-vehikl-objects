@@ -15,7 +15,7 @@ class Bot
 
     private Personality $personality;
 
-    public function __construct(?Player $player = null, PersonalityType $personality = null)
+    public function __construct(?Player $player = null, ?PersonalityType $personality = null)
     {
         $this->player = $player ?: new Player(Str::uuid()->toString());
         $this->personality = $personality ? new $personality->value() : new KeepLane();

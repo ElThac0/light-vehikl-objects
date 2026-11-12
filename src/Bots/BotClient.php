@@ -36,10 +36,27 @@ class BotClient
      */
     public function connect(string $gameId): void
     {
+        $this->setName();
         $this->joinGame($gameId);
         $this->connectWebsocket();
         $this->setReady();
         $this->listenForUpdates();
+    }
+
+    /**
+     * The name is stored in the server session, so it must be set before joining.
+     */
+    protected function setName(): void
+    {
+        $name = $this->bot->name();
+        $response = $this->webClient->post($this->host . '/player-name', ['name' => $name]);
+
+        if (!$response->successful()) {
+            ($this->output)('<error>Failed to set name: ' . $response->body() . '</error>');
+            return;
+        }
+
+        ($this->output)('Name set to <info>' . $name . '</info>');
     }
 
     /**

@@ -11,6 +11,13 @@ class ChangeDirection implements Personality
 {
     use PicksGoodMoves;
 
+    private string $name = 'Change Direction';
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
     public function decideMove(Arena $arena, Player $player): ?Direction
     {
         return $this->pickGoodMove($arena, $player);

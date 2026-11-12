@@ -11,6 +11,13 @@ class KeepLane implements Personality
 {
     use PicksGoodMoves;
 
+    private string $name = 'Keep Lane';
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
     public function decideMove(Arena $arena, Player $player): ?Direction
     {
         if ($this->goodDirection($arena, $player, $player->direction)) {

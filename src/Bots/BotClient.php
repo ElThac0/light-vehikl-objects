@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use LightVehikl\LvObjects\GameObjects\Arena;
 use LightVehikl\LvObjects\GameObjects\Personalities\Personality;
 use LightVehikl\LvObjects\GameObjects\Player;
+use Phrity\Net\Context;
 use WebSocket\Client as WSClient;
 
 /**
@@ -26,9 +27,14 @@ class BotClient
         public Personality $bot,
         public string $host,
         public string $socketHost,
-        public \Closure $output
+        public \Closure $output,
+        public bool $verifyTls = true,
     ) {
         $this->webClient = Http::setClient(Http::buildClient());
+
+        if (!$this->verifyTls) {
+            $this->webClient->withoutVerifying();
+        }
     }
 
     /**
@@ -86,6 +92,18 @@ class BotClient
     {
         ($this->output)('Connecting to websocket with key ' . $this->webSocketKey);
         $this->ws = new WSClient($this->socketHost . $this->webSocketKey . '?protocol=7');
+
+        if (!$this->verifyTls) {
+            // Allow self-signed / local dev certificates on wss:// connections.
+            $this->ws->setContext((new Context())->setOptions([
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true,
+                ],
+            ]));
+        }
+
         $this->ws
             // Add standard middlewares
             ->addMiddleware(new \WebSocket\Middleware\CloseHandler())

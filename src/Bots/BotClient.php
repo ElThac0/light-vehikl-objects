@@ -35,6 +35,8 @@ class BotClient
         if (!$this->verifyTls) {
             $this->webClient->withoutVerifying();
         }
+
+        $bot->setOutput($this->output);
     }
 
     /**
